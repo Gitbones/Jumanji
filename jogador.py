@@ -1,6 +1,3 @@
-import random
-
-
 class Jogador(object):
 
     def __init__(self, nome="1", posicao=0):
