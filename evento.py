@@ -29,7 +29,7 @@ class Rinoceronte(object):
         game.jogador.andar_tras(2)
 
 class Nada(object):
-    def executa(self):
+    def executa(self, game):
         print("Estranhamente, nada aconteceu. Prossegue sua jogada.")
 
 class Enchente(object):
