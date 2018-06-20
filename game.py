@@ -17,16 +17,21 @@ class Game(object):
 
     def executa_evento(self):
         eventos = [Macaco(), Gorila(), Vento(), Jacare(), Rinoceronte(), Nada(), Enchente()]
-        eventos[randint(0, len(eventos))].executa(self)
+        eventos[randint(0, len(eventos) - 1)].executa(self)
 
     def jogar_dados(self):
         self.__jogador.andar_frente(int(randint(0, 6)))
         self.executa_evento()
-        self.diminuir_jogadas()
+        self.diminuir_jogadas(1)
 
-    def diminuir_jogadas(self):
-        self.__limite_jogadas -= 1
+    def diminuir_jogadas(self, value):
+        self.__limite_jogadas -= value
 
+    def perder(self):
+        return self.__limite_jogadas <= 0
+
+    def ganhar(self):
+        return self.__tabuleiro.qtd_casas <= self.__jogador.posicao
 
 if __name__ == '__main__':
 
