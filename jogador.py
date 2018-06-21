@@ -13,7 +13,13 @@ class Jogador(object):
         return self.__posicao
 
     def andar_frente(self, value):
-        self.__posicao += value
+        if(self.__posicao + value >= 30):
+            self.__posicao = 30
+        else:
+            self.__posicao += value
 
     def andar_tras(self, value):
-        self.__posicao -= value
+        if(self.__posicao - value <= 0):
+            self.__posicao = 0
+        else:
+            self.__posicao -= value

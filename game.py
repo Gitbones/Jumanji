@@ -16,34 +16,47 @@ class Game(object):
     def jogador(self):
         return self.__jogador
 
+    @property
+    def limite_jogadas(self):
+        return self.__limite_jogadas
+
     def executa_evento(self):
         self.eventos[randint(0, len(self.eventos) - 1)].executa(self)
 
+
     def jogar_dados(self):
-        self.__jogador.andar_frente(int(randint(1, 6)))
+        valor = int(randint(1, 6))
+        self.jogador.andar_frente(valor)
+        print("Você tirou {} e está agora na posição {}".format(valor, self.jogador.posicao))
         self.executa_evento()
         self.diminuir_jogadas(1)
 
     def diminuir_jogadas(self, value):
-        self.__limite_jogadas -= value
-        if(self.__limite_jogadas < 0):
+        if(self.__limite_jogadas - value <= 0):
             self.__limite_jogadas = 0
+        else:
+            self.__limite_jogadas -= value
 
     def perder(self):
-        return self.__limite_jogadas <= 0
+        return self.__limite_jogadas == 0
 
     def ganhar(self):
-        return self.__tabuleiro.qtd_casas <= self.__jogador.posicao
+        return self.__tabuleiro.qtd_casas == self.__jogador.posicao
+
 
 if __name__ == '__main__':
 
     g = Game(Tabuleiro(), Jogador())
     while(not g.ganhar() and not g.perder()):
+        print("Aperte ENTER para jogar os dados!")
+        input()
         g.jogar_dados()
-        print(g.jogador.posicao)
+
+        print("A sua posição é: {}".format(g.jogador.posicao))
+        print("Você ainda tem {} jogadas\n".format(g.limite_jogadas))
         if(g.ganhar()):
-            print("Ganhou!")
+            print("Parabéns você GANHOU!")
             break
         elif(g.perder()):
-            print("Perdeu!")
+            print("Perdeu e ficou preso para sempre em JUMANJI!")
             break
