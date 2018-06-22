@@ -6,6 +6,7 @@ from evento import *
 
 class Game(object):
 
+    #Inicia as classes que serão utilizadas e o limite de jogadas permitidas
     def __init__(self, tabuleiro, jogador, limite_jogadas=15):
         self.__tabuleiro = tabuleiro
         self.__jogador = jogador
@@ -23,7 +24,8 @@ class Game(object):
     def executa_evento(self):
         self.eventos[randint(0, len(self.eventos) - 1)].executa(self)
 
-
+    #Cria a função do dado d6 e do seu movimento. Já atualização a posição do jogador
+    #e o numero de jogadas máximo
     def jogar_dados(self):
         valor = int(randint(1, 6))
         self.jogador.andar_frente(valor)
@@ -45,7 +47,7 @@ class Game(object):
 
 
 if __name__ == '__main__':
-
+#Laço principal do jogo, criando as entradas do usuáros e saídas do sistema.
     g = Game(Tabuleiro(), Jogador())
     while(not g.ganhar() and not g.perder()):
         print("Aperte ENTER para jogar os dados!")
