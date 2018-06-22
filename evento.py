@@ -53,15 +53,3 @@ class Enchente(Evento):
         super(Enchente, self).executa(game)
         print("Um enchente te deixou impossibilitado de se mover. Não jogue a próxima rodada")
         game.diminuir_jogadas(1)
-
-
-'''
-1 - O macaco Twelves apareceu e roubou os dados. Fique uma rodada sem jogar.
-2 – Um gorila te jogou longe. Volte uma casa.
-3 – Um aglomerado de morcegos bloqueou a visão de seu adversário, aproveite e avance mais duas casas.
-4 – Um forte vento virou o dado e alterou sua jogada.  Ande o equivalente à sua jogada mais uma casa extra.
-5 – Um jacaré mordeu seu pé. Fique duas rodada sem jogar.
-6 – Uma manada de rinocerontes veio em sua direção. Você fugiu e voltou duas casas.
-7 – Estranhamente, nada aconteceu. Prossegue sua jogada.
-8 – Um enchente te deixou impossibilitado de se mover. Não jogue a próxima rodada
-'''
